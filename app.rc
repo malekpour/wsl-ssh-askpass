@@ -1,0 +1,3 @@
+// Include the manifest for visual styles (ComCtl32 v6) and dark mode
+#define RT_MANIFEST 24
+1 RT_MANIFEST "app.manifest"

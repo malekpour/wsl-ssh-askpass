@@ -1,0 +1,8 @@
+# Configuration for cross-compiling to Windows using cargo-xwin
+
+[build]
+target = "x86_64-pc-windows-msvc"
+
+[target.x86_64-pc-windows-msvc]
+linker = "lld-link"
+rustflags = ["-C", "link-arg=/ENTRY:mainCRTStartup"]

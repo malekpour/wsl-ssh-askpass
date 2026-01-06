@@ -1,0 +1,31 @@
+[package]
+name = "wsl-ssh-askpass"
+version = "1.0.0"
+edition = "2021"
+description = "SSH askpass utility for WSL2"
+license = "MIT"
+
+[build-dependencies]
+embed-resource = "2"
+
+[dependencies.windows]
+version = "0.58"
+features = [
+    "Foundation",
+    "Security_Credentials_UI",
+    "Win32_Foundation",
+    "Win32_Graphics_Gdi",
+    "Win32_Security_Credentials",
+    "Win32_System_WinRT",
+    "Win32_UI_WindowsAndMessaging",
+]
+
+[profile.release]
+opt-level = "z"
+lto = true
+strip = true
+panic = "abort"
+
+# Windows subsystem - no console window
+[target.'cfg(windows)'.build]
+rustflags = ["-C", "link-args=/SUBSYSTEM:WINDOWS"]
